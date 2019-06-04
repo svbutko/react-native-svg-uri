@@ -130,6 +130,7 @@ class SvgUri extends Component{
     try {
       const response = await fetch(uri);
       responseXML = await response.text();
+      responseXML = responseXML.replace(/(\r\n|\n|\r)/gm, "").replace(/\>[\t ]+\</g, "><").replace(/\>[\t ]+$/g, ">");
     } catch(e) {
       error = e;
       console.error("ERROR SVG", e);
